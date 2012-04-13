@@ -46,6 +46,7 @@
 
     // Expand values inside simple string templates with {placeholders}
     function t(template, info) {
+
       if (typeof template === "string") {
         var result = template;
         for(var key in info) {
@@ -177,10 +178,14 @@
       o.item = item;
       o.source = item.source;
       o.screen_name = item.from_user || item.user.screen_name;
+      o.user_name = item.from_user_name || item.user.name;
+      o.description = item.description;
       o.avatar_size = s.avatar_size;
       o.avatar_url = extract_avatar_url(item, (document.location.protocol === 'https:'));
       o.retweet = typeof(item.retweeted_status) != 'undefined';
+      o.isodate = item.created_at;
       o.tweet_time = parse_date(item.created_at);
+      o.tweet_date = (new Date(o.tweet_time)).toLocaleDateString();
       o.join_text = s.join_text == "auto" ? build_auto_join_text(item.text) : s.join_text;
       o.tweet_id = item.id_str;
       o.twitter_base = "http://"+s.twitter_url+"/";
@@ -200,7 +205,7 @@
       o.user = t('<a class="tweet_user" href="{user_url}">{screen_name}</a>', o);
       o.join = s.join_text ? t(' <span class="tweet_join">{join_text}</span> ', o) : ' ';
       o.avatar = o.avatar_size ?
-        t('<a class="tweet_avatar" href="{user_url}"><img src="{avatar_url}" height="{avatar_size}" width="{avatar_size}" alt="{screen_name}\'s avatar" title="{screen_name}\'s avatar" border="0"/></a>', o) : '';
+        t('<a class="tweet_avatar" href="{user_url}"><img src="{avatar_url}" height="{avatar_size}" width="{avatar_size}" alt="{screen_name}\'s avatar" border="0"/></a>', o) : '';
       o.time = t('<span class="tweet_time"><a href="{tweet_url}" title="view tweet on twitter">{tweet_relative_time}</a></span>', o);
       o.text = t('<span class="tweet_text">{tweet_text_fancy}</span>', o);
       o.reply_action = t('<a class="tweet_action tweet_reply" href="{reply_url}">reply</a>', o);

@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1331060300" format="1.1" reprev="3" version="4"}%
+%META:TOPICINFO{author="ProjectContributor" comment="reprev" date="1334314767" format="1.1" reprev="3" version="6"}%
 ---+!! %TOPIC%
 %SHORTDESCRIPTION%
 
@@ -56,7 +56,7 @@ Put twitter on your website with tweet!, an unobtrusive javascript plugin for jq
 | username                           | [string or array] required unless using the 'query' option; one or more twitter screen names (use 'list' option for multiple names, where possible) | null |
 | list                               | [string]   optional name of list belonging to username | null |
 | favorites                          | [boolean]  display the user's favorites instead of his tweets | false |
-| query                              | [string]   optional search query (see also: http://search.twitter.com/operators) | #foswiki |
+| query                              | [string]   optional search query (see also: http://search.twitter.com/operators) | null |
 | avatar_size                        | [integer]  height and width of avatar if displayed (48px max) | 48 |
 | count                              | [integer]  how many tweets to display? | 10 |
 | fetch                              | [integer]  how many tweets to fetch via the API (set this higher than 'count' if using the 'filter' option) | null |
@@ -75,7 +75,7 @@ Put twitter on your website with tweet!, an unobtrusive javascript plugin for jq
 | twitter_url               | [string]   custom twitter url, if any (apigee, etc.) | "twitter.com" |
 | twitter_api_url       | [string]   custom twitter api url, if any (apigee, etc.) | "api.twitter.com" |
 | twitter_search_url | [string]   custom twitter search url, if any (apigee, etc.) | "search.twitter.com" |
-| template   | [string or function] template used to construct each tweet <li> - see code for available vars | "{avatar}{time}{join}{text}" |
+| template   | [string or function] template used to construct each tweet <li> - see code for available vars | "{avatar} <b>{user_name}</b> {text} <div class='tweet_date foswikiGrayText'>{tweet_date}</div>" |
 | comparator | [function] comparator used to sort tweets (see Array.sort) | <verbatim class="js"> function(tweet1, tweet2) {  return tweet2["tweet_time"] - tweet1["tweet_time"]; }</verbatim> |
 | filter | [function] whether or not to include a particular tweet (be sure to also set 'fetch') | <verbatim class="js">function(tweet) {return true; }</verbatim> |
 
@@ -94,8 +94,7 @@ Put twitter on your website with tweet!, an unobtrusive javascript plugin for jq
 |  Release: | %$RELEASE% |
 |  Version: | %$VERSION% |
 |  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  13 Apr 2012: | improved default template for tweets, required some changes to the orig jquery.tweet code |
 |  Dependencies: | %$DEPENDENCIES% |
 |  Home page: | Foswiki:Extensions/%TOPIC% |
 |  Support: | Foswiki:Support/%TOPIC% |
-
-%META:PREFERENCE{name="NATSKIN_STYLE" title="NATSKIN_STYLE" type="Local" value="jazzynote"}%

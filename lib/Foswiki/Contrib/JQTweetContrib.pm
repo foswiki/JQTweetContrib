@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 our $VERSION = '$Rev$';
-our $RELEASE = '57a715f380';
+our $RELEASE = '1.0';
 our $SHORTDESCRIPTION = 'Put twitter on your website';
 our $NO_PREFS_IN_TOPIC = 1;
 

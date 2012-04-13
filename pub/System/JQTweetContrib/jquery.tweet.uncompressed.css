@@ -13,11 +13,13 @@
 .tweet_list li {
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 1.0em 0;
+  margin: 1.0em 0;
+  padding: 1.0em 0 0 60px;
   border-top:1px solid #ddd;
   list-style-type: none;
 }
 .tweet_list li.tweet_first {
+  padding-top:0px;
   border-top:0px;
 }
 
@@ -30,10 +32,13 @@
 }
 
 .tweet_list .tweet_avatar {
-  padding-right: .5em; 
-  float: left;
+  margin-left:-60px;
+  padding-right: 1em; 
+  background:transparent;
+  float:left;
 }
 
 .tweet_list .tweet_avatar img {
   vertical-align: middle;
 }
+
